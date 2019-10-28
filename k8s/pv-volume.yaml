@@ -5,7 +5,9 @@ metadata:
   labels: 
     type: local
 spec:
-capacity: 
-  storage: 10 Gi
-acessModes: 
-  -ReadWriteOnce
+  capacity: 
+    storage: 10Gi
+  accessModes: 
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data/"
