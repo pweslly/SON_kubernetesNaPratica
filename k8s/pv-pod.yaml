@@ -1,0 +1,25 @@
+kind: Pod
+apiVersion: v1
+metadata: 
+  name: task-pv-pod
+spec:
+  volumes:
+    - name: task-pv-storage
+# Aqui tenho solicitação pra alocar volume para esse pod
+      persistentVolumeClaim:
+# Aqui vou passar nome da socilitação
+        claimName: task-pv-claim
+  containers:
+      # Aqui nome do meu container
+    - name: pv-container
+      # Imagem que vou usar nesse container
+      image: nginx
+      ports: 
+          # Aqui estou porta que vou acessar meu container
+        - containerPort: 80
+          # Aqui estou dando nome a minha porta
+          name: "http-server"
+      volumeMounts:
+          # Esse pasta do nginx vai usar meu volume/storage para armazenar meu conteúdo
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage  
