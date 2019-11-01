@@ -1,4 +1,4 @@
-apiVersion: extensions/v1beta1
+  apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: mysql
@@ -22,6 +22,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: mysql
+                  key:  password
           ports:
             - containerPort: 3306
               name: mysql
